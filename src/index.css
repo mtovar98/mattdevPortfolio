@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Puedes añadir estilos globales personalizados aquí */
+body {
+  @layer bg-primary text-textPrimary font-sans;
+}
+
+
+#navbar {
+  margin-left: 2rem;
+}
