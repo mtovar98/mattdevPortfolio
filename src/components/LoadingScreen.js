@@ -23,7 +23,7 @@ const LoadingScreen = ({ onComplete }) => {
     return (
         <div className=" font-robotoMono fixed top-0 left-0 w-full h-full flex items-center justify-center bg-cover bg-center"> 
         <video
-            className="absolute top-0 left-50 w-[99%] h-full object-cover opacity-2"
+            className="absolute top-0 left-50 w-[99%] h-full object-cover opacity-20"
             src="/videos/codigo-binario.mov"
             autoPlay
             loop
@@ -35,17 +35,12 @@ const LoadingScreen = ({ onComplete }) => {
 
       {/* Porcentaje de carga en la esquina inferior derecha */}
 
-      <div className="absolute bottom-10 right-8 flex flex-col  text-[#b4f532] font-bold z-10 opacity-90 px-2 py-4">
-            <div className="flex items-center justify-between text-7xl space-x-2">
-                <span>WEB</span>
+      <div className="absolute flex flex-col items-center justify-center  text-[#b4f532] z-10  text-center px-4 py-4">
+            <div className=" text-[40px]">
                 <span>{progress}%</span>
             </div>
-            <p className="text-7xl">DEVELOPER</p>
+            <p className="text-[20px]"><span className="text-[#c3cad0]">Loading </span>MattDev</p>
         </div>
-      {/* <div className="absolute bottom-15 right-8 text-[#b4f532] text-7xl font-bold z-10 opacity-90">
-        {progress}%
-      <p className="absolute top-8 right-14 text-[#b4f532] text-7xl font-bold z-10">Web Developer</p>
-      </div> */}
     </div>
     );
 };

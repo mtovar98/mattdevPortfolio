@@ -4,8 +4,21 @@
 
 /* Puedes añadir estilos globales personalizados aquí */
 body {
-  @layer bg-primary text-textPrimary font-sans;
+  @layer bg-primary;
 }
+
+.blinking-cursor {
+  display: inline-block;
+  width: 10px;
+  animation: blink 0.6s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+
+
 
 
 #navbar {

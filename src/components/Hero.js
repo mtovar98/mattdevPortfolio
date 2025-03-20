@@ -1,71 +1,106 @@
-import { motion, useMotionValue } from "framer-motion";
-import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 function Hero() {
+    const fullText = "DEVELOPER";
+    const speed = 150; // Velocidad de escritura (ms)
+    const pauseTime = 2000; // Tiempo de espera antes de borrar (ms)
+    const initialDelay = 2500 // Delay inicial antes de empezar a escribir
+    const [text, setText] = useState("");
+    const [isTyping, setIsTyping] = useState(false);
 
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-    const [isHovering, setIsHovering] = useState(false);
+    useEffect(() => {
+        let index = 0;
+        let isDeleting = false;
 
-    const handleMouseMove = (e) => {
-        if (!isHovering) return;
+        const startTyping = () => {
+            setIsTyping(true); // Activa la animación después del delay inicial
+            const typeWriter = () => {
+                if (isDeleting) {
+                    setText(""); // Borra todo de golpe
+                    setTimeout(() => {
+                        isDeleting = false;
+                        index = 0; // Reinicia el índice
+                        setIsTyping(true);
+                        typeWriter();
+                    }, speed);
+                    return;
+                }
 
-        const rect = e.currentTarget.getBoundingClientRect();
-        const offsetX = e.clientX - rect.left;
-        const offsetY = e.clientY - rect.top;
+                setText(fullText.slice(0, index + 1));
+                index++;
 
-        const moveX = (offsetX - rect.width / 2) * 0.01; // Ajusta la intensidad del movimiento
-        const moveY = (offsetY - rect.height / 2) * 0.01;
+                if (index === fullText.length) {
+                    setTimeout(() => {
+                        isDeleting = true;
+                        setIsTyping(false); // Oculta el cursor al borrar
+                        typeWriter();
+                    }, pauseTime);
+                    return;
+                }
+                setTimeout(typeWriter, speed);
+            };
+            typeWriter();
+        };
 
-        x.set(moveX);
-        y.set(moveY);
-    };
+        // ⏳ Agregar delay inicial antes de iniciar la animación
+        setTimeout(startTyping, initialDelay);
+    }, []);
+
 
 
     return (
-        <section id="home" className="h-screen bg-[#1c1c1c] flex flex-col justify-center items-center bg-cover bg-center text-[#b4f532] text-left py-20" >
-            <div className="grid grid-cols-1 md:grid-cols-[20%_85%] gap-16 w-[90%] h-[85vh] px-10 relative">
-                <motion.div className="flex flex-col justify-center relative mb-20 z-10"
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 50 }}
-                        transition={{ duration: 1, ease: "easeOut", delay: 1.3 }}                        
-                >
-                    <h1 className="text-2xl mt-[-80px]">
-                        NEW PROJECT 01<br/>
-                        TECHNOLOGY<br/>
-                        PORTFOLIO<br/>
-                        20  /  25
-                    </h1>
-                    <img alt="logo" src="/images/logo.png" className="absolute bottom-[-60px] left-0 w-[500px] max-w-none z-20"></img>
-                </motion.div>
-
-
-                <div 
-                    className="flex justify-center items-center w-full left-10 relative overflow-hidden rounded-2xl"
-                    onMouseEnter={() => setIsHovering(true)}
-                    onMouseLeave={() => { setIsHovering(false); x.set(0); y.set(0); }}
-                    onMouseMove={handleMouseMove}
-                    style={{ width: "100%", maxWidth: "85%", height: "80vh" }}
-                >
-                    <motion.img 
-                        alt="Imagen Principal" 
-                        src="/images/fotoPrinci.png" 
-                        className="w-full h-full object-cover "
-                        style={{ x, y, scale: 1 } }
-                        transition={{ type: "spring", stiffness: 100, damping: 10 }}
-                    />
-                   
-                    <motion.div className="absolute bottom-4 right-0 text-[#b4f532] px-10 py-2 rounded-lg text-2xl"
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 50 }}
-                        transition={{ duration: 1, ease: "easeOut", delay: 1.3 }} 
-                    >
-                        01 / PORTFOLIO 20/25
-                    </motion.div>
+        <section 
+            id="home" 
+            className="h-screen w-full bg-[#101010] flex justify-center items-center relative overflow-hidden"
+        >
+            {/* Imagen de fondo con degradado en los bordes */}
+            <div 
+                className="absolute inset-0 w-full h-full"
+               
+            >
+                <img 
+                    alt="Imagen Principal" 
+                    src="/images/imgPrinci.png" 
+                    className="w-full object-contain scale-80 transition-none animate-none"
+                />
+                
+                {/* Degradado para mezclar la imagen con el fondo */}
+                <div className="absolute inset-0 pointer-events-none">
+                {/* Degradados en los bordes */}
+                    <div className="absolute top-0 left-0 w-full h-[10%] bg-gradient-to-b from-[#101010] to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 w-full h-[10%] bg-gradient-to-t from-[#101010] to-transparent"></div>
+                    <div className="absolute left-0 top-0 h-full w-[10%] bg-gradient-to-r from-[#101010] to-transparent"></div>
+                    <div className="absolute right-0 top-0 h-full w-[10%] bg-gradient-to-l from-[#101010] to-transparent"></div>
                 </div>
+
             </div>
+            {/* Texto centrado con borde y sin relleno */}
+            <motion.h1 
+                className="absolute text-[160px] text-transparent uppercase tracking-wider z-10"
+                style={{WebkitTextStroke: "1px #c3cad0"}}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                transition={{ duration: 1.4 }}
+            >
+                {text}
+                <span className={`blinking-cursor ${isTyping ? "" : ""}`}>_</span>
+            </motion.h1>
+
+    
+            {/* Contenedor del texto */}
+            <motion.div 
+                className="absolute bottom-10 w-full text-center text-[#b4f532] z-10"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "easeOut", delay: 1.3 }}
+            >
+                <h1 className="text-[20px] mb-6">
+                    NEW PROJECT 01<br/>
+                    DEVELOPER<br/>
+                    PORTFOLIO  20 / 25<br/>
+                </h1>
+            </motion.div>
         </section>
     );
 }

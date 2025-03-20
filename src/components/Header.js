@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-scroll";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
@@ -36,24 +35,27 @@ const Navbar = () => {
             transition={{ duration: 1, ease: "easeOut", delay: 1.3 }}
             >
                 <nav>
-                    <ul className="flex space-x-6">
+                    <ul className="flex mt-6  ml-6 space-x-12">
                         <li>
-                            <Link to="home" smooth={true} duration={500} className="hover:text-[#b4f532] cursor-pointer hover:shadow-[0_0_10px_#b4f532]">Home</Link>
+                            <a href="#home" className="flex items-center">
+                                <img 
+                                    alt="Imagen Principal" 
+                                    src="/images/logoHeader.png"
+                                    className="w-30 h-14 "
+                                ></img>
+                            </a>
                         </li>
                         <li>
-                            <Link to="about" smooth={true} duration={500} className="hover:text-[#b4f532] cursor-pointer hover:font-bold">About me</Link>
-                        </li>
-                        <li>
-                            <Link to="projects" smooth={true} duration={500} className="hover:text-[#b4f532] cursor-pointer hover:shadow-[0_0_10px_#b4f532] hover:font-bold">Projects</Link>
-                        </li>
-                        <li>
-                            <Link to="contact" smooth={true} duration={500} className="hover:text-[#b4f532] cursor-pointer">Contact</Link>
+                            <div className="ml-[20px] underline font-robotoMono text-[#c2cad0] text-[12px]">
+                                <p>AVAILABLE FOR FREELANCE</p>
+                                <p>MATTDEV9898@GMAIL.COM</p>
+                                <p>+57 312 5687025</p>
+                            </div>
                         </li>
                     </ul>
                 </nav>
                 <div className="ml-auto">
-                    <p className="opacity-60">Hello, my name is</p>
-                    <p className="font-bold text-[12px] text-center">Miguel Tovar</p>
+                    <p className="font-robotoMono text-[20px]">Hello, I'm MATT</p>
                 </div>
             </motion.div>
         </header>      

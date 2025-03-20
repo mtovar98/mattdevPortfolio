@@ -17,10 +17,10 @@ function App() {
         {isLoaded && (
           <motion.div 
             className="font-robotoMono bg-primary text-textPrimary"
-            initial={{ x: "-100%" }}
-            animate={{ x: "0%" }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 1, ease: "easeInOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
             >
               <Header></Header>
               <Hero></Hero>
