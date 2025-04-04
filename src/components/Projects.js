@@ -7,20 +7,20 @@ function Projects() {
   const [activeIndex, setActiveIndex] = useState(1); // La central inicia en index 1
 
   const projects = [
-    { id: 1, image: "/images/imgDer.jpeg", link: "/proyecto1" },
-    { id: 2, image: "/images/imgDer.jpeg", link: "/proyecto2" },
-    { id: 3, image: "/images/imgDer.jpeg", link: "/proyecto3" },
+    { id: 1, image: "/images/proEjem2.png", link: "/proyecto1" },
+    { id: 2, image: "/images/proEjem.png", link: "/proyecto2" },
+    { id: 3, image: "/images/proEjem.png", link: "/proyecto3" },
   ];
 
   return (
-    <section id="projects" className=" flex flex-col justify-center items-center bg-[#101010] font-robotoMono pt-4">
+    <section id="projects" className="mt-[-0px] min-h-screen flex flex-col justify-center items-center bg-[#101010] font-robotoMono overflow-hidden">
       
-      <div className="w-full px-10">
-        <h2 className="text-[30px] text-[#c3cad0] text-center w-full px-20 py-10">PROJECTS</h2>
+      <div className="w-full mt-[-px]">
+        <h2 className="text-[25px] text-[#c3cad0] text-center w-full py-6">PROJECTS</h2>
       </div>
       
       <div
-        className="relative flex justify-center items-center w-full max-w-4xl h-[400px]"
+        className="relative mt-20 mb-[20vh] flex justify-center items-center w-full  max-w-2xl h-[400px]"
         onMouseLeave={() => setActiveIndex(1)} // 👈 Regresa la imagen central al quitar el mouse
       >
         {projects.map((project, index) => {
@@ -29,7 +29,7 @@ function Projects() {
           let scale = position === 0 ? 1.2 : 1; // La imagen central es más grande
           let zIndex = position === 0 ? 10 : 5; // La imagen central está al frente
           let opacity = position === 0 ? 1 : 0.8; // La central es más visible
-          let xOffset = position * 180; // Controla la separación entre imágenes
+          let xOffset = position * 280; // Controla la separación entre imágenes
 
           return (
             <motion.div

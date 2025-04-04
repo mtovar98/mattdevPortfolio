@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 /* Puedes añadir estilos globales personalizados aquí */
+
+
+
 body {
   @layer bg-primary;
 }
@@ -17,6 +20,10 @@ body {
   50% { opacity: 0; }
 }
 
+/* En tu archivo CSS */
+.text-align-last-center {
+  text-align-last: center;
+}
 
 
 
@@ -24,3 +31,6 @@ body {
 #navbar {
   margin-left: 2rem;
 }
+
+
+

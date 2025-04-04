@@ -52,18 +52,25 @@ function Hero() {
     return (
         <section 
             id="home" 
-            className="h-screen w-full bg-[#101010] flex justify-center items-center relative overflow-hidden"
+            className="h-screen bg-[#101010] flex justify-center items-center relative overflow-hidden"
         >
+            <div className="absolute w-full h-full inset-0">
             {/* Imagen de fondo con degradado en los bordes */}
-            <div 
-                className="absolute inset-0 w-full h-full"
-               
-            >
+            <div className="absolute inset-0 w-full h-full hidden sm:block">
                 <img 
                     alt="Imagen Principal" 
                     src="/images/imgPrinci.png" 
-                    className="w-full object-contain scale-80 transition-none animate-none"
+                    className="object-contain -translate-x-6 transition-none animate-none"
                 />
+            </div>
+            {/* Imagen exclusiva para mobile */}
+            <div className="absolute inset-0 w-full h-full  sm:hidden">
+                <img 
+                    alt="Imagen Mobile" 
+                    src="/images/imgPrinci.png" 
+                    className="w-full h-full object-cover transition-none  scale-95 animate-none"
+                />
+            </div>
                 
                 {/* Degradado para mezclar la imagen con el fondo */}
                 <div className="absolute inset-0 pointer-events-none">
@@ -73,11 +80,12 @@ function Hero() {
                     <div className="absolute left-0 top-0 h-full w-[10%] bg-gradient-to-r from-[#101010] to-transparent"></div>
                     <div className="absolute right-0 top-0 h-full w-[10%] bg-gradient-to-l from-[#101010] to-transparent"></div>
                 </div>
-
             </div>
+            
+
             {/* Texto centrado con borde y sin relleno */}
             <motion.h1 
-                className="absolute text-[160px] text-transparent uppercase tracking-wider z-10"
+                className="absolute text-[160px] text-transparent uppercase tracking-wider z-10 xs:-translate-x-3 xs:text-[50px] sm:text-[100px] md:text-[120px] lg:text-[160px]"
                 style={{WebkitTextStroke: "1px #c3cad0"}}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.5 }}
@@ -95,7 +103,7 @@ function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut", delay: 1.3 }}
             >
-                <h1 className="text-[20px] mb-6">
+                <h1 className="text-[20px] lg:text-[20px] xl:text-[20px] xs:text-[16px] xs:mb-12 mb-6">
                     NEW PROJECT 01<br/>
                     DEVELOPER<br/>
                     PORTFOLIO  20 / 25<br/>

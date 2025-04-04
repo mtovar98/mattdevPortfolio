@@ -2,14 +2,19 @@ import React from "react";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
+
+
+
 function Contact() {
     return (
-        <section id="contact" className="min-h-screen py-6 bg-black text-[#b4f532]">
+        <section id="contact" className="min-h-screen bg-[#101010]">
             <div className="container mx-auto px-10 text-center">
-                <h2 className="text-4xl font-extrabold mb-8">Contacto</h2>
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <form className="bg-slate-600 p-8 rounded-lg shadow-lg space-y-2">
+                <h2 className="text-[25px] text-[#c3cad0] py-2 mb-8">CONTACT</h2>
+
+
+                <div className=" items-center">
+                    <div className="items-center justify-center flex">
+                        <form className="bg-slate-600 p-8 text-[13px] rounded-lg shadow-lg space-y-2 w-[70vh]">
                             <div>
                                 <label htmlFor="name" className="block text-left mb-2">
                                     Nombre
@@ -63,15 +68,16 @@ function Contact() {
                         </form>
                     </div>
 
+                </div>
                     <div>
-                        <p className="text-xl mb-6">Sígueme en mis redes sociales:</p>
-                        <div className="flex justify-center space-x-6">
+                        
+                        <div className="flex text-[#c3cad0] hover:text-[#c3cad0]/80 transition duration-300 justify-center space-x-6 py-6">
                             {/* LinkedIn */}
                             <a
                             href="www.linkedin.com/in/miguel-tovar-tabares-6553021b9"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-accent hover:text-accent/80 transition duration-300 text-3xl"
+                            className="text-3xl"
                             >
                             <i className="fab fa-linkedin"></i>
                             </a>
@@ -81,7 +87,7 @@ function Contact() {
                             href="https://www.facebook.com/share/18aLTub7t5/?mibextid=wwXIfr"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-accent hover:text-accent/80 transition duration-300 text-3xl"
+                            className="text-3xl"
                             >
                             <i className="fab fa-facebook"></i>
                             </a>
@@ -91,7 +97,7 @@ function Contact() {
                             href="https://www.instagram.com/mtovar.98?igsh=emR2cDFiZWZyM2U1&utm_source=qr"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-accent hover:text-accent/80 transition duration-300 text-3xl"
+                            className="text-3xl"
                             >
                             <i className="fab fa-instagram"></i>
                             </a>
@@ -101,13 +107,12 @@ function Contact() {
                             href="https://www.tiktok.com/@mtovar098?_t=ZS-8tLvDTyL13H&_r=1"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-accent hover:text-accent/80 transition duration-300 text-3xl"
+                            className="text-3xl"
                             >
                             <i className="fab fa-tiktok"></i>
                             </a>
                         </div>
                     </div>
-                </div>
             </div>
         </section>
     )

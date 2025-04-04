@@ -21,28 +21,26 @@ const LoadingScreen = ({ onComplete }) => {
     }, [onComplete]);
 
     return (
-        <div className=" font-robotoMono fixed top-0 left-0 w-full h-full flex items-center justify-center bg-cover bg-center"> 
-        <video
-            className="absolute top-0 left-50 w-[99%] h-full object-cover opacity-20"
+        <div className="font-robotoMono fixed top-0 left-0 w-full h-full flex items-center justify-center bg-cover bg-center">
+          <video
+            className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full object-cover opacity-20"
             src="/videos/codigo-binario.mov"
             autoPlay
             loop
             muted
-        >      
-        </video>
-
-      {/* Texto superior derecho */}
-
-      {/* Porcentaje de carga en la esquina inferior derecha */}
-
-      <div className="absolute flex flex-col items-center justify-center  text-[#b4f532] z-10  text-center px-4 py-4">
-            <div className=" text-[40px]">
-                <span>{progress}%</span>
+          ></video>
+    
+          {/* Contenedor del texto */}
+          <div className="absolute flex flex-col items-center justify-center z-10 text-center px-4 py-4">
+            <div className="text-[#b4f532] text-[40px] md:text-[50px] lg:text-[60px]">
+              <span>{progress}%</span>
             </div>
-            <p className="text-[20px]"><span className="text-[#c3cad0]">Loading </span>MattDev</p>
+            <p className="text-[#c3cad0] text-[18px] md:text-[20px] lg:text-[22px]">
+              Loading <span className="text-[#b4f532]">MattDev</span>
+            </p>
+          </div>
         </div>
-    </div>
-    );
-};
+      );
+    };
 
 export default LoadingScreen;
