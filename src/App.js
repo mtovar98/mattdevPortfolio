@@ -16,7 +16,7 @@ function App() {
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
         {isLoaded && (
           <motion.div 
-            className="font-robotoMono bg-primary text-textPrimary"
+            className="font-robotoMono bg-primary text-textPrimary overflow-x-hidden w-full"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

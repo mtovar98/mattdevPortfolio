@@ -13,14 +13,14 @@ function Projects() {
   ];
 
   return (
-    <section id="projects" className="mt-[-0px] min-h-screen flex flex-col justify-center items-center bg-[#101010] font-robotoMono overflow-hidden">
+    <section id="projects" className="mt-[-0px] min-h-screen flex flex-col  items-center bg-[#101010] font-robotoMono overflow-hidden">
       
-      <div className="w-full mt-[-px]">
-        <h2 className="text-[25px] text-[#c3cad0] text-center w-full py-6">PROJECTS</h2>
+      <div className="w-full">
+        <h2 className="xl:text-[25px] sm:text-[20px] xs:text-[18px] text-[#c3cad0] text-center w-full py-6">PROJECTS</h2>
       </div>
       
       <div
-        className="relative mt-20 mb-[20vh] flex justify-center items-center w-full  max-w-2xl h-[400px]"
+        className="relative mt-20 mb-[20vh] flex justify-center items-center w-full  xl:w-[100vh] xl:scale-100 max-w-2xl xl:h-[400px] lg:h-[400px] xs:h-[70px] xs:scale-[40%]"
         onMouseLeave={() => setActiveIndex(1)} // 👈 Regresa la imagen central al quitar el mouse
       >
         {projects.map((project, index) => {
@@ -48,7 +48,7 @@ function Projects() {
               <img
                 src={project.image}
                 alt={`Proyecto ${index + 1}`}
-                className="w-[300px] h-auto shadow-lg transition-all"
+                className="w-[300px] xl:h-auto shadow-lg transition-all"
               />
             </motion.div>
           );

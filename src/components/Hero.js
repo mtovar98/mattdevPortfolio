@@ -60,15 +60,15 @@ function Hero() {
                 <img 
                     alt="Imagen Principal" 
                     src="/images/imgPrinci.png" 
-                    className="object-contain -translate-x-6 transition-none animate-none"
+                    className="object-contain -translate-x-10 transition-none animate-none"
                 />
             </div>
             {/* Imagen exclusiva para mobile */}
-            <div className="absolute inset-0 w-full h-full  sm:hidden">
+            <div className="absolute inset-0 w-[120%] h-full -translate-x-[8%] overflow-hidden sm:hidden">
                 <img 
                     alt="Imagen Mobile" 
                     src="/images/imgPrinci.png" 
-                    className="w-full h-full object-cover transition-none  scale-95 animate-none"
+                    className="xs:w-[170%] h-full object-cover transition-none -translate-x-[8%] scale-95 animate-none"
                 />
             </div>
                 
