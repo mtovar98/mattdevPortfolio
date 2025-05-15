@@ -1,91 +1,105 @@
-import React from "react";
+import React, { useState } from "react";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
-const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    const form = e.target;
-    const data = new FormData(form);
-  
-    const response = await fetch("https://formspree.io/f/mvgaorpg", {
-      method: "POST",
-      body: data,
-      headers: {
-        Accept: "application/json",
-      },
-    });
-  
-    if (response.ok) {
-      alert("✅ Email Sent Successfully! Thank you for reaching out — I'll be in touch shortly.");
-      form.reset(); // limpia el formulario
-    } else {
-      alert("❌ Oops! Something went wrong. Please try again.");
-    }
-  };
-  
-
+import { toast } from 'react-hot-toast';
 
 
 function Contact() {
+    
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+    
+      
+        const form = e.target;
+        const data = new FormData(form);
+
+        const name = data.get("name")?.trim();
+        const email = data.get("email")?.trim();
+        const subject = data.get("subject")?.trim();
+        const message = data.get("message")?.trim();
+
+        if (!name || !email || !subject || !message) {
+        toast.error("❌ Please fill in all fields.");
+        setIsLoading(false);
+        return;
+        }
+
+        try {
+        const response = await fetch("https://formspree.io/f/mvgaorpg", {
+            method: "POST",
+            body: data,
+            headers: {
+            Accept: "application/json",
+            },
+        });
+        
+        if (response.ok) {
+            toast.success("✅ Email Sent Successfully! Thank you for reaching out — I'll be in touch shortly.");
+            form.reset();
+          } else {
+            toast.error("❌ Oops! Something went wrong. Please try again.");
+          }
+        } catch (error) {
+          toast.error("❌ Error connecting to the server.");
+        }
+    
+        setIsLoading(false);
+      };
+
     return (
-        <section id="contact" className="min-h-screen bg-[#101010] flex flex-col items-center justify-center px-8 py-8">
-          <h2 className="text-[#c2cad0] xl:text-[25px] sm:text-[20px] xs:text-[18px] tracking-wider mb-10">
-            LET'S <span className="text-[#b4f532]">WORK</span> TOGETHER!
-          </h2>
+      <section
+            id="contact"
+            className=" bg-[#101010] flex flex-col items-center justify-center px-8 py-10 xl:mt-0 ms:mt-[-90px] sm:mt-[-180px]"
+          >
+            <h2 className="text-[#c2cad0] xl:text-[25px] sm:text-[20px] xs:text-[18px] tracking-wider mb-12">
+              LET'S <span className="text-[#b4f532]">WORK</span> TOGETHER!
+            </h2>
+    
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-center xl:gap-20 sm:gap-0 xs:gap-0">
       
           <div className="flex justify-center items-start  xl:flex-wrap md:flex-nowrap">
-            <form 
-                onSubmit={handleSubmit}
-                method="POST"
-                className="backdrop-blur-md bg-[#1a1a1a]/50 border border-[#b4f532] shadow-[0_0_15px_#b4f53244] rounded-2xl p-8 xl:w-[380px] xs:w-[40vh] text-left space-y-3 xs:text-[12px] xl:text-[15px]">
-              <div>
-                <label htmlFor="name" className="block text-[#c2cad0] font-semibold mb-2">NAME</label>
+          <form 
+            onSubmit={handleSubmit}
+            method="POST"
+            className="backdrop-blur-md bg-[#1a1a1a]/50 border border-[#b4f532] shadow-[0_0_15px_#b4f53244] rounded-2xl p-8 xl:w-[380px] xs:w-[40vh] ms:w-[35vh] sm:w-[36vh] text-left space-y-3 xs:text-[12px] xl:text-[15px] sm:mb-8 ms:mb-8"
+          >
+            {["name", "email", "subject"].map((field, i) => (
+              <div key={i}>
+                <label htmlFor={field} className="block text-[#c2cad0] font-semibold mb-2">
+                  {field.toUpperCase()}
+                </label>
                 <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Your name"
+                  id={field}
+                  name={field}
+                  type={field === "email" ? "email" : "text"}
+                  placeholder={`Your ${field}`}
                   className="w-full p-2 rounded-lg bg-[#1f1f1f] text-[#c2cad0] border border-[#2b2b2b] focus:outline-none focus:ring-2 focus:ring-[#b4f532]/60 transition-all duration-200 xl:text-[12px] sm:text-[10px] xs:text-[10px]"
                 />
               </div>
-              <div>
-                <label htmlFor="email" className="block text-[#c2cad0] font-semibold mb-2 ">EMAIL</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Your email"
-                  className="w-full p-2 rounded-lg bg-[#1f1f1f] text-[#c2cad0] border border-[#2b2b2b] focus:outline-none focus:ring-2 focus:ring-[#b4f532]/60 transition-all duration-200 xl:text-[12px] sm:text-[10px] xs:text-[10px]"
-                />
-              </div>
-              <div>
-                <label htmlFor="subject" className="block text-[#c2cad0] font-semibold mb-2">SUBJECT</label>
-                <input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  placeholder="Subject"
-                  className="w-full p-2 rounded-lg bg-[#1f1f1f] text-[#c2cad0] border border-[#2b2b2b] focus:outline-none focus:ring-2 focus:ring-[#b4f532]/60 transition-all duration-200 xl:text-[12px] sm:text-[10px] xs:text-[10px]"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-[#c2cad0] font-semibold mb-2">MESSAGE</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  placeholder="Write here your message"
-                  className="w-full p-2 rounded-lg bg-[#1f1f1f] text-[#c2cad0] border border-[#2b2b2b] focus:outline-none focus:ring-2 focus:ring-[#b4f532]/60 transition-all duration-200 xl:text-[12px] sm:text-[10px] xs:text-[10px]"
-                />
-              </div>
-              <button
-                type="submit"
-                className="xl:w-3/4 sm: xs:w-[10vh] bg-[#b4f532] text-[#101010] mx-auto block py-2 rounded-lg hover:bg-[#a5e42f] transition duration-300 tracking-wide"
-              >
-                Enviar
-              </button>
-            </form>
+            ))}
+
+            <div>
+              <label htmlFor="message" className="block text-[#c2cad0] font-semibold mb-2">MESSAGE</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Write your message"
+                className="w-full p-2 rounded-lg bg-[#1f1f1f] text-[#c2cad0] border border-[#2b2b2b] focus:outline-none focus:ring-2 focus:ring-[#b4f532]/60 transition-all duration-200 xl:text-[12px] sm:text-[10px] xs:text-[10px]"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`xl:w-3/4 xs:w-[10vh] mx-auto block py-2 rounded-lg transition duration-300 tracking-wide
+                ${isLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#b4f532] hover:bg-[#a5e42f] text-[#101010]'}`}
+            >
+              {isLoading ? "Enviando..." : "Enviar"}
+            </button>
+          </form>
           </div>
 
 

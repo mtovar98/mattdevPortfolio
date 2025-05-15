@@ -56,7 +56,7 @@ function Hero() {
         >
             <div className="absolute w-full h-full inset-0">
             {/* Imagen de fondo con degradado en los bordes */}
-            <div className="absolute inset-0 w-full h-full hidden sm:block">
+            <div className="absolute inset-0 w-full h-full hidden sm:block z-10">
                 <img 
                     alt="Imagen Principal" 
                     src="/images/imgPrinci.png" 
@@ -64,7 +64,7 @@ function Hero() {
                 />
             </div>
             {/* Imagen exclusiva para mobile */}
-            <div className="absolute inset-0 w-[120%] h-full -translate-x-[8%] overflow-hidden sm:hidden">
+            <div className="absolute inset-0 xs:w-[120%] sm:w-[140%] ms:w-[140%] h-full xs:-translate-x-[8%] ms:-translate-x-[18%] sm:-translate-x-[18%] overflow-hidden xl:hidden z-10">
                 <img 
                     alt="Imagen Mobile" 
                     src="/images/imgPrinci.png" 
@@ -73,7 +73,7 @@ function Hero() {
             </div>
                 
                 {/* Degradado para mezclar la imagen con el fondo */}
-                <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 pointer-events-none z-10">
                 {/* Degradados en los bordes */}
                     <div className="absolute top-0 left-0 w-full h-[10%] bg-gradient-to-b from-[#101010] to-transparent"></div>
                     <div className="absolute bottom-0 left-0 w-full h-[10%] bg-gradient-to-t from-[#101010] to-transparent"></div>
@@ -85,7 +85,7 @@ function Hero() {
 
             {/* Texto centrado con borde y sin relleno */}
             <motion.h1 
-                className="absolute text-[160px] text-transparent uppercase tracking-wider z-10 xs:-translate-x-3 xs:text-[50px] sm:text-[100px] md:text-[120px] lg:text-[160px]"
+                className="absolute text-[160px] text-transparent uppercase tracking-wider z-10 xs:-translate-x-3 xs:text-[50px] sm:text-[60px] md:text-[120px] lg:text-[160px]"
                 style={{WebkitTextStroke: "1px #c3cad0"}}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.5 }}

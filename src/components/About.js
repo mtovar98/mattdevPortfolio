@@ -162,18 +162,18 @@ const AboutSection = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
             {estudios.map((estudio, index) => (
-              <div key={index} className="xl:w-3/4 flex flex-col items-center xl:py-3 xs:py-2 sm:w-[90%] xs:w-[95%]">
-                <div className="grid xl:w-2/3 xl:grid-cols-[12rem_auto] sm:grid-cols-[10rem_auto] xs:grid-cols-[8rem_auto] items-center xl:gap-16 sm:gap-8 xs:gap-6">
+              <div key={index} className="xl:w-3/4 flex flex-col items-center xl:py-3 xs:py-4 sm:w-[90%] xs:w-[95%]">
+                <div className="grid xl:w-2/3 xl:grid-cols-[14rem_auto] sm:grid-cols-[10.5rem_auto] ms:grid-cols-[9.5rem_auto] xs:grid-cols-[8.5rem_auto] items-center xl:gap-16 sm:gap-8 xs:gap-6">
                   <div className="flex justify-center items-center h-16">
-                    <img src={estudio.logo} alt="Logo" className="h-full xl:max-w-[28vh] xs:max-w-[20vh] object-contain" />
+                    <img src={estudio.logo} alt="Logo" className="h-full xl:max-w-[28vh] xs:max-w-[20vh] sm:max-w-[18vh] object-contain" />
                   </div>
                   <div className="h-16 flex items-center">
-                    <span className="xl:text-[13px] sm:text-[12px] xs:text-[11px] text-left">{estudio.titulo}</span>
+                    <span className="xl:text-[13px] sm:text-[10px] xs:text-[11px] text-left">{estudio.titulo}</span>
                   </div>
                 </div>
 
                 {index < estudios.length - 1 && (
-                  <div className="xl:w-2/3 sm:w-[80%] xs:w-[90%] xl:mr-10 xs:mr-8 mt-3">
+                  <div className="xl:w-2/3 sm:w-[90%] xs:w-[90%] xl:mr-10 xs:mr-8 mt-3">
                     <hr className="border-t-2 border-white opacity-60" />
                   </div>
                 )}
@@ -182,7 +182,7 @@ const AboutSection = () => {
           </motion.div>
 
 
-              <div className="overflow-hidden bg-[#101010] py-8 w-full">
+              <div className="overflow-hidden bg-[#101010] xl:py-20 sm:py-14 xs:py-12 w-full">
                 <motion.div
                     className="flex whitespace-nowrap text-[#b4f532] text-[20px]"
                     animate={{ x: ["0%", "-100%"] }}

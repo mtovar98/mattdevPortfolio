@@ -37,7 +37,7 @@ const Navbar = () => {
             
             <motion.div 
                 id="navbar" 
-                className="container mx-auto xl:mt-4 xs:mt-2 xs:w-[53vh] xl:w-full lg:w-full flex justify-between items-center xs:px-0 lg:px-8"
+                className="container mx-auto xl:mt-4 xs:mt-2 xs:w-[53vh] ms:w-[44vh] sm:w-[44vh] xl:w-full lg:w-full flex justify-between items-center xs:px-0 lg:px-8"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 50 }}
