@@ -55,7 +55,7 @@ const Navbar = () => {
                         }}
                         alt="Logo" 
                         src="/images/logoHeader.png"
-                        className="xl:w-28 xl:h-12 xs:w-16 xs:h-6"
+                        className="xl:w-28 xl:h-12 xs:w-16 xs:h-6 cursor-pointer"
                     />
                     
 

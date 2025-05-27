@@ -60,7 +60,7 @@ function Hero() {
                 <img 
                     alt="Imagen Principal" 
                     src="/images/imgPrinci.png" 
-                    className="object-contain -translate-x-10 transition-none animate-none"
+                    className="object-contain -translate-x-16 transition-none animate-none"
                 />
             </div>
             {/* Imagen exclusiva para mobile */}

@@ -1,17 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import PopupProyecto1 from "./PopupProyecto1";
+import PopupProyecto2 from "./PopupProyecto2";
 
 function Projects() {
-  const navigate = useNavigate();
+
   const scrollRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0); // Primer proyecto como destacado
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  // const [selectedProject, setSelectedProject] = useState(null);
+  const [modal1Visible, setModal1Visible] = useState(false);
+  const [modal2Visible, setModal2Visible] = useState(false);
+
 
   const projects = [
-    { id: 1, image: "/images/proj1.png", link: "/proyecto1" },
-    { id: 2, image: "/images/proj2.png", link: "/proyecto2" },
+    { id: 1, image: "/images/proj1.png", link: "proyecto1" },
+    { id: 2, image: "/images/proj2.png", link: "proyecto2" },
   ];
 
   useEffect(() => {
@@ -52,6 +58,33 @@ function Projects() {
     };
   }, []);
 
+      useEffect(() => {
+        const html = document.documentElement;
+        const body = document.body;
+
+        const shouldBlockScroll = modal1Visible || modal2Visible;
+
+        if (shouldBlockScroll) {
+          html.style.overflow = "hidden";
+          body.style.overflow = "hidden";
+        } else {
+          html.style.overflow = "auto";
+          body.style.overflow = "auto";
+        }
+
+        return () => {
+          html.style.overflow = "auto";
+          body.style.overflow = "auto";
+        };
+      }, [modal1Visible, modal2Visible]);
+
+
+
+    const handleProjectClick = (projectId) => {
+    if (projectId === 1) setModal1Visible(true);
+    if (projectId === 2) setModal2Visible(true);
+  };
+
   return (
     <section
       id="projects"
@@ -80,7 +113,7 @@ function Projects() {
               <motion.div
                 key={project.id}
                 className="absolute cursor-pointer"
-                onClick={() => navigate(project.link)}
+                onClick={() => handleProjectClick(project.id)}
                 onHoverStart={() => setActiveIndex(index)}
                 animate={{ scale, zIndex, opacity, x: xOffset }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -117,9 +150,9 @@ function Projects() {
         <motion.div
           key={project.id}
           className="shrink-0 snap-center cursor-pointer"
-          onClick={() => navigate(project.link)}
-          animate={{ scale, zIndex, opacity }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          onClick={() => handleProjectClick(project.id)}
+                animate={{ scale, zIndex, opacity }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
         >
           <div className="flex justify-center">
             <img
@@ -135,6 +168,10 @@ function Projects() {
     })}
   </div>
 )}
+
+    {/* Popups individuales */}
+      {modal1Visible && <PopupProyecto1 onClose={() => setModal1Visible(false)} />}
+      {modal2Visible && <PopupProyecto2 onClose={() => setModal2Visible(false)} />}
 
     </section>
   );
