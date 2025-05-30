@@ -19,8 +19,8 @@ const AboutSection = () => {
   const estudios = [
     { logo: "/images/logoSena.png", titulo: "Technologist in Software Analysis and Development"},
     { logo: "/images/logoUN.png", titulo: "Diploma in Programming Fundamentals"},
-    { logo: "/images/logoDistri.png", titulo: "Diploma in Full Stack Development"},
-    { logo: "/images/logoDistri.png", titulo: "Diploma in JavaScript Programming Language"},
+    { logo: "/images/logoDistri3.png", titulo: "Diploma in Full Stack Development"},
+    { logo: "/images/logoDistri3.png", titulo: "Diploma in JavaScript Programming Language"},
     { logo: "/images/logo_libre.png", titulo: "Degree in Environmental Engineering"},
     
   ];
@@ -73,25 +73,48 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 viewport={{ once: true, amount: 0.6 }}
               >
-              I am a Software Development Technologist and Environmental Engineer with a strong focus on programming and web development. 
-              Throughout my career, I have gained solid knowledge in languages such as HTML, CSS, and JavaScript, along with hands-on experience
-              using frameworks and libraries like Angular, Laravel, and React. I’ve worked on various web projects, including landing pages and portfolios, 
-              implementing solutions with technologies such as WordPress and Shopify.
+              I am a Software Development Technologist and Environmental Engineer with a strong focus on programming and web development.
+              I’ve worked on various web projects including landing pages, portfolios, and custom websites, implementing solutions with technologies such as WordPress and Shopify.
               </motion.p>
-              <motion.p 
-                className=" py-8 text-justify text-align-last-center"
+              <motion.div 
+                className=" py-10 text-justify text-align-last-center"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 viewport={{ once: true, amount: 0.6 }}
               >
-              I have experience working with both relational (MySQL) and non-relational (MongoDB) databases. I am proficient with key 
-              development tools such as Git, GitHub, JMeter, and IntelliJ IDEA, which help me streamline workflows and ensure 
-              high code quality.
+                <h2 className="mb-2">PROGRAMMING LANGUAGES</h2>
+                <div className="display-flex flex gap-[10px] text-center items-center justify-center mb-3"> 
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" className="xl:w-8 xs:w-6"/> 
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" className="xl:w-8  xs:w-6"/> 
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="xl:w-8 xs:w-6"/> 
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="xl:w-8 xs:w-6"/>
+                </div>
+                <div className="w-full flex justify-center mb-4">
+                  <hr className="w-2/3 border-t border-white opacity-60" />
+                </div>
 
-              My profile combines strong technical skills with a strategic mindset for developing innovative technological solutions, 
-              always focused on meeting user needs and enhancing the overall digital experience.
-              </motion.p>
+                <h2 className="mb-2">FRAMEWORKS AND LIBRARIES</h2>
+                <div className="display-flex flex gap-[10px] text-center items-center justify-center mb-3"> 
+                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" className="xl:w-8 xs:w-6"/> 
+                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="xl:w-8 xs:w-6"/> 
+                </div>
+                 <div className="w-full flex justify-center mb-4">
+                  <hr className="w-2/3 border-t border-white opacity-60" />
+                </div>
+                
+                <h2 className="mb-2">DATABASES AND DEVELOPMENT TOOLS</h2>
+                <div className="display-flex flex gap-[10px] text-center items-center justify-center mb-3"> 
+                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" className="xl:w-8 xs:w-6" /> 
+                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="xl:w-8 xs:w-6" />
+                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" className="xl:w-8 xs:w-6" /> 
+                   <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Github_white.svg" alt="GitHub" className="xl:w-8 xs:w-6" />
+                </div>
+                 <div className="w-full flex justify-center mb-4">
+                  <hr className="w-2/3 border-t border-white opacity-60" />
+                </div>
+              
+              </motion.div>
               <motion.p 
                 className="text-justify text-align-last-center"
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -99,6 +122,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 viewport={{ once: true, amount: 0.6 }}
               >         
+                  My profile combines strong technical skills with a strategic mindset for developing innovative technological solutions, always focused on meeting user needs and enhancing the overall digital experience.
                   In my portfolio, you will find projects that showcase my focus on developing 
                   well-structured and dynamic applications.
               </motion.p>
@@ -164,7 +188,7 @@ const AboutSection = () => {
             {estudios.map((estudio, index) => (
               <div key={index} className="xl:w-3/4 flex flex-col items-center xl:py-3 xs:py-4 sm:w-[90%] xs:w-[95%]">
                 <div className="grid xl:w-2/3 xl:grid-cols-[14rem_auto] sm:grid-cols-[10.5rem_auto] ms:grid-cols-[9.5rem_auto] xs:grid-cols-[8.5rem_auto] items-center xl:gap-16 sm:gap-8 xs:gap-6">
-                  <div className="flex justify-center items-center h-16">
+                  <div className="flex justify-center items-center h-14">
                     <img src={estudio.logo} alt="Logo" className="h-full xl:max-w-[28vh] xs:max-w-[20vh] sm:max-w-[18vh] object-contain" />
                   </div>
                   <div className="h-16 flex items-center">
@@ -172,7 +196,7 @@ const AboutSection = () => {
                   </div>
                 </div>
 
-                {index < estudios.length - 1 && (
+                {index < estudios.length  && (
                   <div className="xl:w-2/3 sm:w-[90%] xs:w-[90%] xl:mr-10 xs:mr-8 mt-3">
                     <hr className="border-t-2 border-white opacity-60" />
                   </div>

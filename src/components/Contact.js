@@ -103,9 +103,9 @@ function Contact() {
           </div>
 
 
-        <div className="flex flex-col items-center justify-start space-y-4">
+        <div className="flex flex-col items-center justify-start xs:mt-2">
 
-          <div className="flex justify-center space-x-6 mt-8">
+          <div className="flex justify-center space-x-6">
             {[
               { href: "https://www.linkedin.com/in/miguel-tovar-tabares-6553021b9", icon: "fab fa-linkedin" },
               { href: "https://www.facebook.com/share/18aLTub7t5/?mibextid=wwXIfr", icon: "fab fa-facebook" },

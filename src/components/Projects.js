@@ -20,43 +20,48 @@ function Projects() {
     { id: 2, image: "/images/proj2.png", link: "proyecto2" },
   ];
 
+
+  // modificacion mobile effect 
   useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
+  if (!isMobile) return;
 
-    // Centrar la primera imagen al cargar
-    const child = container.children[0];
-    if (child) {
-      const scrollLeft =
-        child.offsetLeft - container.offsetWidth / 2 + child.offsetWidth / 2;
-      container.scrollTo({ left: scrollLeft, behavior: "smooth" });
-    }
+  const container = scrollRef.current;
+  if (!container) return;
 
-    const handleScroll = () => {
-      const scrollLeft = container.scrollLeft;
-      const containerWidth = container.offsetWidth;
-      const center = scrollLeft + containerWidth / 2;
+  // Centrar la primera imagen al cargar
+  const child = container.children[0];
+  if (child) {
+    const scrollLeft =
+      child.offsetLeft - container.offsetWidth / 2 + child.offsetWidth / 2;
+    container.scrollTo({ left: scrollLeft, behavior: "smooth" });
+  }
 
-      let closestIndex = 0;
-      let closestDistance = Infinity;
+  const handleScroll = () => {
+    const scrollLeft = container.scrollLeft;
+    const containerWidth = container.offsetWidth;
+    const center = scrollLeft + containerWidth / 2;
 
-      container.childNodes.forEach((child, index) => {
-        const childCenter = child.offsetLeft + child.offsetWidth / 2;
-        const distance = Math.abs(center - childCenter);
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
-      });
+    let closestIndex = 0;
+    let closestDistance = Infinity;
 
-      setActiveIndex(closestIndex);
-    };
+    Array.from(container.children).forEach((child, index) => {
+      const childCenter = child.offsetLeft + child.offsetWidth / 2;
+      const distance = Math.abs(center - childCenter);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
 
-    container.addEventListener("scroll", handleScroll);
-    return () => {
-      container.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    setActiveIndex(closestIndex);
+  };
+
+  container.addEventListener("scroll", handleScroll);
+  return () => {
+    container.removeEventListener("scroll", handleScroll);
+  };
+}, [isMobile]); // 👈 muy importante que se escuche este cambio
+
 
       useEffect(() => {
         const html = document.documentElement;
@@ -137,7 +142,9 @@ function Projects() {
                h-[95vh] sm:h-[70vh] ms:h-[80vh]
                py-14 sm:py-16 ms:py-16
                px-16 sm:px-20 ms:px-20
-               justify-start"
+               justify-start
+               overflow-x-auto overflow-y-hidden
+               scrollbar-hide"
     style={{ overflowX: "auto", overflowY: "hidden" }}
   >
     {projects.map((project, index) => {

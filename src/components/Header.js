@@ -61,7 +61,7 @@ const Navbar = () => {
 
                     {/* Texto "Available for freelance" solo en pantallas grandes */}
                     <div className="hidden underline lg:block text-[#c2cad0] text-[12px]">
-                        <p>AVAILABLE FOR FREELANCE</p>
+                        <p>AVAILABLE FOR PROJECTS</p>
                         <p>MATTDEV9898@GMAIL.COM</p>
                         <p>+57 312 5687025</p>
                     </div>

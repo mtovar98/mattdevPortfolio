@@ -1,17 +1,5 @@
-
 import { motion } from "framer-motion";
 
-// const images = [
-//     '/images/imgpro1/fol1.png',
-//     '/images/imgpro1/fol2.png',
-//     '/images/imgpro1/fol3.png',
-//     '/images/imgpro1/fol4.png',
-//     '/images/imgpro1/fol5.png',
-//     '/images/imgpro1/fol6.png',
-//     '/images/imgpro1/fol7.png',
-//     '/images/imgpro1/fol8.png',
-    
-//   ]
 
   const InfiniteCarousel = ({ images }) => {
     const duplicatedImages = [...images, ...images]
@@ -29,11 +17,11 @@ import { motion } from "framer-motion";
         }}
       >
         {duplicatedImages.map((src, index) => (
-          <div key={index} className="min-w-[800px]">
+          <div key={index} className="min-w-[400px]">
             <img
               src={src}
               alt={`Imagen ${index + 1}`}
-              className="rounded-lg shadow-lg object-cover w-full h-[400px]"
+              className="rounded-lg shadow-lg object-cover w-full h-[60vh]"
             />
           </div>
         ))}
